@@ -1,5 +1,5 @@
 const functions = require('firebase-functions');
-const { gcs } = require('@google-cloud/storage');
+const gcs = require('@google-cloud/storage');
 const os = require('os');
 const path = require('path');
 
@@ -11,7 +11,7 @@ const path = require('path');
 // });
 exports.onFileImport = functions.storage.object().onFinalize(event => {
     // we want to rename file imported
-    const object = event.data;
+    const object = event;
     const bucket = object.bucket;
     const contentType = object.contentType;
     const filePath = object.name;
