@@ -38,3 +38,14 @@ exports.onFileImport = functions.storage.object().onFinalize(event => {
     
  
 });
+
+exports.api = functions.https.onRequest((req, res) => {
+
+    if (req.method !== 'POST') {
+        return res.send("Not allowed")
+    }
+    res.status(200).json({
+        message: 'It works'
+    })
+    
+})
